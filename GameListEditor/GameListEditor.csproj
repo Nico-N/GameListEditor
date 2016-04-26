@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2D12A615-32DF-4634-BD73-0CE848758479}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameListEditor</RootNamespace>
+    <AssemblyName>GameListEditor</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EnterGameIDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnterGameIDForm.Designer.cs">
+      <DependentUpon>EnterGameIDForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameDatabaseRequest.cs" />
+    <Compile Include="GameListEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameListEditor.Designer.cs">
+      <DependentUpon>GameListEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameEntry.cs" />
+    <Compile Include="GameListFile.cs" />
+    <Compile Include="GameListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameListView.Designer.cs">
+      <DependentUpon>GameListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameSearchForm.Designer.cs">
+      <DependentUpon>GameSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameSearchItem.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="OrphanWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrphanWarning.Designer.cs">
+      <DependentUpon>OrphanWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RomFileExtensionChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomFileExtensionChooser.Designer.cs">
+      <DependentUpon>RomFileExtensionChooser.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="EnterGameIDForm.resx">
+      <DependentUpon>EnterGameIDForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameListEditor.resx">
+      <DependentUpon>GameListEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameListView.resx">
+      <DependentUpon>GameListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameSearchForm.resx">
+      <DependentUpon>GameSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrphanWarning.resx">
+      <DependentUpon>OrphanWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RomFileExtensionChooser.resx">
+      <DependentUpon>RomFileExtensionChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
