@@ -148,21 +148,37 @@ namespace GameListEditor
 
         }
 
+        /// <summary>
+        /// nextButton_Click event -> select next game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nextButton_Click(object sender, EventArgs e)
         {
             currentEntry++;            
             FillDataFields();
         }
 
+        /// <summary>
+        /// prevButton_Click event -> select previous game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void prevButton_Click(object sender, EventArgs e)
         {
             currentEntry--;            
             FillDataFields();
         }
 
+        /// <summary>
+        /// GameEntrysListBox_SelectedIndexChanged -> select entry choosen in ListBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GameEntrysListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            //act only if codeTrigered value is false 
             if (!codeTriggered)
             {
                 currentEntry = gameEntrysListBox.SelectedIndex;                
@@ -171,146 +187,226 @@ namespace GameListEditor
             
         }
 
+        /// <summary>
+        /// nameTextBox_TextChanged event -> apply entered text to name property of currently selected game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nameTextBox_TextChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].Name = nameTextBox.Text;
         }
 
+        /// <summary>
+        /// descriptionTextBox_TextChanged event -> apply entered text to description property of currently selected game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void descriptionTextBox_TextChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].Description = descriptionTextBox.Text;
         }
 
+        /// <summary>
+        /// imageTextBox_TextChanged event -> apply entered text to image property of currently selected game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void imageTextBox_TextChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].Image = imageTextBox.Text;
         }
 
+        /// <summary>
+        /// ratingTextBox_TextChanged event -> apply entered text to rating property of currently selected game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ratingTextBox_TextChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].Rating = ratingTextBox.Text;
         }
 
+        /// <summary>
+        /// releaseTextBox_TextChanged event -> apply entered text to ReleaseDate property of currently selected game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void releaseTextBox_TextChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].ReleaseDate = releaseTextBox.Text;
         }
 
+        /// <summary>
+        /// developerTextBox_TextChanged event -> apply entered text to Developer property of currently selected game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void developerTextBox_TextChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].Developer = developerTextBox.Text;
         }
 
+        /// <summary>
+        /// PublishertextBox_TextChanged event -> apply entered text to Publisher property of currently selected game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PublishertextBox_TextChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].Publisher = publisherTextBox.Text;
         }
 
+        /// <summary>
+        /// genreTextBox_TextChanged event -> apply entered text to Genre property of currently selected game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void genreTextBox_TextChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].Genre = genreTextBox.Text;
         }
 
+        /// <summary>
+        /// playersTextBox_TextChanged event -> apply entered text to Players property of currently selected game entry
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void playersTextBox_TextChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].Players = playersTextBox.Text;
         }
 
+        /// <summary>
+        /// artworkPictureBox_DragEnter event
+        /// 
+        /// Look for allowed Drag & Drop effects of DragEvent.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void artworkPictureBox_DragEnter(object sender, DragEventArgs e)
         {
+            //If copy is allowed set drag effect to copy
             if ((e.AllowedEffect & DragDropEffects.Copy) == DragDropEffects.Copy)
                 e.Effect = DragDropEffects.Copy;
 
+            //If link is allowed set drag effect to link
             if ((e.AllowedEffect & DragDropEffects.Link) == DragDropEffects.Link)
                 e.Effect = DragDropEffects.Link;
         }
 
+        /// <summary>
+        /// Load an image from an url to the PictureBox
+        /// </summary>
+        /// <param name="imageURL">url of image to load</param>
+        /// <returns>returns true on succesful load</returns>
         private bool LoadImageFromURL (string imageURL)
         {
-            try
+            try //try to load the image
             {
-                artworkPictureBox.Image = null;
-                artworkDropLabel.Text = "Loading image...";
+                artworkPictureBox.Image = null; //clean PictureBox
+
+                //Show loading text
+                artworkDropLabel.Text = "Loading image...";  
                 artworkDropLabel.Visible = true;
                 artworkDropLabel.Update();
+
+                //load the image
                 artworkPictureBox.Load(imageURL);
+
+                //hide loading text
                 artworkDropLabel.Visible = false;
                 return true;
 
             }
-            catch
+            catch //Error handling if something goes wrong while trying to load image
             {
+                //Show error in text of artwork box label
                 artworkDropLabel.Text = "Error loading image\n" + imageURL;
                 return false;
             }
         }
 
+        /// <summary>
+        /// Saves the content of the artwork PictureBox to a filename derived from the rom name
+        /// </summary>
         private void SaveImageboxToFile()
         {
             bool okToSave = false;
-                bool successfullySaved = false;
-                string outFilename = localImagePath + "\\" + System.IO.Path.GetFileNameWithoutExtension(gameListEntrys[currentEntry].Path) + "-image.jpg";
-
-                if (System.IO.File.Exists(outFilename))
-                {
-                    DialogResult result;
-                    result = MessageBox.Show(this, "File " + outFilename + " already exists. Overwrite?", "Warning", MessageBoxButtons.YesNo);
-
-                    if (result == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            System.IO.File.Delete(outFilename);
-                            okToSave = true;
-                        }
-                        catch (Exception exp)
-                        {
-
-                            MessageBox.Show("Can't overwrite file " + outFilename + "\n" + exp.ToString());
-                        }
-                    }
-                }
-                else
-                {
-                    okToSave = true;
-                }
+            bool successfullySaved = false;
+            string outFilename = localImagePath + "\\" + System.IO.Path.GetFileNameWithoutExtension(gameListEntrys[currentEntry].Path) + "-image.jpg";
 
 
+            //If file already exists ask user for overwrite OK
+            if (System.IO.File.Exists(outFilename))
+            {
+                DialogResult result;
+                result = MessageBox.Show(this, "File " + outFilename + " already exists. Overwrite?", "Warning", MessageBoxButtons.YesNo);
 
-                if (okToSave)
+                //If OK to overwrite -> try to delete old file
+                if (result == DialogResult.Yes)
                 {
                     try
                     {
-                        Bitmap resizedImage = ResizeImageToWidth(artworkPictureBox.Image, resizeWidth);
-                        resizedImage.Save(outFilename, System.Drawing.Imaging.ImageFormat.Png);
-                        successfullySaved = true;
-                        resizedImage.Dispose();
+                        System.IO.File.Delete(outFilename);
+                        okToSave = true; //if old file succesfully deleted -> ok to save new file
                     }
                     catch (Exception exp)
                     {
-                        MessageBox.Show("Error saving new image to\n" + outFilename + "\n" + exp.ToString());
-                        successfullySaved = false;
+                        MessageBox.Show("Can't overwrite file " + outFilename + "\n" + exp.ToString());
                     }
                 }
-                else
-                {
-                    FillDataFields();
-                }
+            }
+            else
+            {
+                okToSave = true; //if file does not exist -> ok to save new file
+            }
 
-                if (successfullySaved)
-                {
 
-                    gameListEntrys[currentEntry].Image = System.IO.Path.GetFileNameWithoutExtension(gameListEntrys[currentEntry].Path) + "-image.jpg";
-                    FillDataFields();
+
+            //If ok to save -> try to save new image
+            if (okToSave)
+            {
+                try
+                {
+                    Bitmap resizedImage = ResizeImageToWidth(artworkPictureBox.Image, resizeWidth);
+                    resizedImage.Save(outFilename, System.Drawing.Imaging.ImageFormat.Png);
+                    successfullySaved = true;
+                    resizedImage.Dispose();
                 }
+                catch (Exception exp)
+                {
+                    MessageBox.Show("Error saving new image to\n" + outFilename + "\n" + exp.ToString());
+                    successfullySaved = false;
+                }
+            }
+            else //if not ok to save -> FillDataFields to show old or empty image again
+            {
+                FillDataFields();
+            }
+
+            //if successfully saved -> update Image property in currently selected GameListEntry
+            if (successfullySaved)
+            {
+
+                gameListEntrys[currentEntry].Image = System.IO.Path.GetFileNameWithoutExtension(gameListEntrys[currentEntry].Path) + "-image.jpg";
+                FillDataFields();
+            }
         }
 
+        /// <summary>
+        /// Drop event wich encounters on Dropping something on the Artwork-PictureBox. Picturebox is filled with an
+        /// image if drop event arguments contain an image-filename or an image-url 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void artworkPictureBox_DragDrop(object sender, DragEventArgs e)
         {
             string filename = String.Empty;
             string imageURL = String.Empty;
             bool successfullyLoaded = false;
 
+            //if drop contains a filename, try to load an image from that file
             if (e.Data.GetDataPresent("Filename"))
             {
 
@@ -337,11 +433,12 @@ namespace GameListEditor
                 }
 
             }
-            else if (e.Data.GetDataPresent("UnicodeText"))
+            else if (e.Data.GetDataPresent("UnicodeText")) //if drop contains an url dragged from an browser try to load image from that url
             {
                 successfullyLoaded = LoadImageFromURL(((IDataObject)e.Data).GetData("UnicodeText").ToString());
             }
 
+            //if an image was succesfully loaded -> try to save that image as new artwork image for the currently selected game
             if (successfullyLoaded)
             {
                 SaveImageboxToFile();
@@ -351,15 +448,25 @@ namespace GameListEditor
 
         }
 
+
+        /// <summary>
+        /// Resizes an image to a specific width. The height will be determinated automatically to match aspect ratio
+        /// </summary>
+        /// <param name="image">Source image to resize</param>
+        /// <param name="width">Target width for new image</param>
+        /// <returns>Returns the resized image</returns>
         private static Bitmap ResizeImageToWidth(Image image, int width)
         {
 
+            //determine new height, create an rectangle and an empty image with the new dimansions
             int height = (int)((float)image.Height / image.Width * width);
             var destRect = new Rectangle(0, 0, width, height);
             var destImage = new Bitmap(width, height);
 
+            //set dpi of new image to same dpi as in the old one
             destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
+            //do the resize
             using (var graphics = Graphics.FromImage(destImage))
             {
                 graphics.CompositingMode = CompositingMode.SourceCopy;
@@ -375,8 +482,10 @@ namespace GameListEditor
                 }
             }
 
+            //return resized Image
             return destImage;
         }
+
 
         private void FillFormWithGameInfoByID(string gameID)
         {
