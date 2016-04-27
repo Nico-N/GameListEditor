@@ -68,12 +68,14 @@ namespace GameListEditor
         }
         
         /// <summary>
-        /// 
+        /// Fill all the data and control elements of the form with data from currently selected game
         /// </summary>
         private void FillDataFields()
         {
             if (gameListEntrys.Length > 0)
             {
+
+                //Fill all Text Boxes
                 pathTextBox.Text = gameListEntrys[currentEntry].Path;
                 nameTextBox.Text = gameListEntrys[currentEntry].Name;
                 descriptionTextBox.Text = gameListEntrys[currentEntry].Description;
@@ -84,20 +86,27 @@ namespace GameListEditor
                 publisherTextBox.Text = gameListEntrys[currentEntry].Publisher;
                 genreTextBox.Text = gameListEntrys[currentEntry].Genre;
                 playersTextBox.Text = gameListEntrys[currentEntry].Players;
+
+                //Fill Hidden Checkbox
                 hiddenCheckBox.Checked = gameListEntrys[currentEntry].Hidden;
+
+                //Set info text ion status bar
                 toolStripStatusLabel.Text = "ID=" + gameListEntrys[currentEntry].ID + " (" + gameListEntrys[currentEntry].Datasource+")";
 
-                codeTriggered = true;
+                //Select current game in Listbox 
+                codeTriggered = true; //preventing actions in SelectedIndexChanged event
                 gameEntrysListBox.SelectedIndex = currentEntry;
                 codeTriggered = false;
 
+
+                //If no image for the current game exists -> show info label
                 if (String.IsNullOrEmpty(gameListEntrys[currentEntry].Image))
                 {
                     artworkPictureBox.Image = null;
                     artworkDropLabel.Text = "Drag an image file or image link here";
                     artworkDropLabel.Visible = true;
                 }
-                else
+                else //if an image exists -> try to load
                 {
                     try
                     {
@@ -108,15 +117,17 @@ namespace GameListEditor
                             artworkDropLabel.Visible = false;
                         }
                     }
-                    catch
+                    catch //error handling if unable to load image
                     {
                         MessageBox.Show("Error loading imagefile:\n" + localImagePath + "\\" + gameListEntrys[currentEntry].Image);
                         artworkPictureBox.Image = null;
                         artworkDropLabel.Text = "Drag an image file or image link here";
                         artworkDropLabel.Visible = true;
                     }
-                }
+                }  //end of load image try
 
+
+                //enable or disable prev and next buttons based on current position in gamelist
                 if (currentEntry == 0)
                     this.prevButton.Enabled = false;
                 else
@@ -130,6 +141,7 @@ namespace GameListEditor
             }  //end of if(gameListEntrys.Length > 0)
             else
             {
+                //disable prev and next button if gamelist is empty
                 this.prevButton.Enabled = false;
                 this.nextButton.Enabled = false;
             }
