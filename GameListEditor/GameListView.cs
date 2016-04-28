@@ -487,13 +487,21 @@ namespace GameListEditor
         }
 
 
+        /// <summary>
+        /// Fills the data fields of the form and the properties of currently selected game entry with
+        /// data from the game database
+        /// </summary>
+        /// <param name="gameID">game id for database lookup</param>
         private void FillFormWithGameInfoByID(string gameID)
         {
+            //Set info text on status bar
             toolStripStatusLabel.Text = "Lookup game information - please wait";
             this.Update();
 
+            //do the request
             GameEntry tempEntry = GameDatabaseRequest.GetGameEntryByID(gameID);
 
+            //if request was successful -> fill properties and data fields
             if (tempEntry != null)
             {
                 gameListEntrys[currentEntry].Name = tempEntry.Name;
@@ -508,6 +516,7 @@ namespace GameListEditor
                 gameListEntrys[currentEntry].Datasource = tempEntry.Datasource;
                 FillDataFields();
 
+                //if databaseentry contains an image url -> load this image to artwork box and save it locally
                 if (!String.IsNullOrEmpty(tempEntry.ImageURL))
                 {
                     bool successfullyLoaded = LoadImageFromURL(tempEntry.ImageURL);
@@ -525,6 +534,12 @@ namespace GameListEditor
             }
         }
 
+
+        /// <summary>
+        /// Click event handler for menu item Search->Enter Game ID
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void enterGameIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             enterIDForm.ShowDialog();
@@ -536,30 +551,45 @@ namespace GameListEditor
 
         }
 
+        /// <summary>
+        /// Click event handler for menu item File -> Save gamelist
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveGamelistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Helper.SaveGamelist(gameListEntrys, relativeImagePath, gamelistFile);
         }
 
+
+        /// <summary>
+        /// Click event handler for menu item Search -> Search game info in database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void searchGameInfoInDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            
-
+            //use the rom name of current entry as default Search String
             string searchQuery = System.IO.Path.GetFileNameWithoutExtension(gameListEntrys[currentEntry].Path);
 
+            //if rom name contains a '(' cut off this an everything beyond
             int cutPoint = searchQuery.IndexOf("(");            
             if (cutPoint > 0)
                 searchQuery = searchQuery.Substring(0, cutPoint);
 
+            //if remaining string contains a '[' cut off this an everything beyond
             cutPoint = searchQuery.IndexOf("[");
             if (cutPoint > 0)
                 searchQuery = searchQuery.Substring(0, cutPoint);
 
+            //use resulting string as default search query
             searchForm.SetSearchQuery(searchQuery);
 
+            //Bring up the form
             searchForm.ShowDialog();
 
+            //if user selected a search result, get the data based on the selected result game id
             if (searchForm.resultSelected)
             {
                 FillFormWithGameInfoByID(searchForm.selectedResultID);
@@ -567,6 +597,11 @@ namespace GameListEditor
 
         }
 
+        /// <summary>
+        /// event handler for "hidden" checkbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void hiddenCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             gameListEntrys[currentEntry].Hidden = hiddenCheckBox.Checked;

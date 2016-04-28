@@ -9,9 +9,17 @@ using System.Xml;
 
 namespace GameListEditor
 {
+    /// <summary>
+    /// Helper Class for getting game data from thegamesdb.net
+    /// </summary>
     class GameDatabaseRequest
     {
-
+        /// <summary>
+        /// Make a request with the given requestURL and return the XML response as XmlDocument
+        /// If an error occurs -> show an error messagebox and return null
+        /// </summary>
+        /// <param name="requestUrl"></param>
+        /// <returns></returns>
         private static XmlDocument MakeRequest(string requestUrl)
         {
             try

@@ -104,14 +104,14 @@
             // saveGamelistToolStripMenuItem
             // 
             this.saveGamelistToolStripMenuItem.Name = "saveGamelistToolStripMenuItem";
-            this.saveGamelistToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveGamelistToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.saveGamelistToolStripMenuItem.Text = "Save Gamelist";
             this.saveGamelistToolStripMenuItem.Click += new System.EventHandler(this.saveGamelistToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // searchToolStripMenuItem
@@ -153,7 +153,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(811, 412);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(810, 412);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -200,7 +200,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.663998F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.663998F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(467, 406);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(466, 406);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // genreTextBox
@@ -208,7 +208,7 @@
             this.genreTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.genreTextBox.Location = new System.Drawing.Point(98, 345);
             this.genreTextBox.Name = "genreTextBox";
-            this.genreTextBox.Size = new System.Drawing.Size(366, 20);
+            this.genreTextBox.Size = new System.Drawing.Size(365, 20);
             this.genreTextBox.TabIndex = 18;
             this.genreTextBox.TextChanged += new System.EventHandler(this.genreTextBox_TextChanged);
             // 
@@ -217,7 +217,7 @@
             this.publisherTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.publisherTextBox.Location = new System.Drawing.Point(98, 319);
             this.publisherTextBox.Name = "publisherTextBox";
-            this.publisherTextBox.Size = new System.Drawing.Size(366, 20);
+            this.publisherTextBox.Size = new System.Drawing.Size(365, 20);
             this.publisherTextBox.TabIndex = 17;
             this.publisherTextBox.TextChanged += new System.EventHandler(this.PublishertextBox_TextChanged);
             // 
@@ -226,7 +226,7 @@
             this.developerTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.developerTextBox.Location = new System.Drawing.Point(98, 293);
             this.developerTextBox.Name = "developerTextBox";
-            this.developerTextBox.Size = new System.Drawing.Size(366, 20);
+            this.developerTextBox.Size = new System.Drawing.Size(365, 20);
             this.developerTextBox.TabIndex = 16;
             this.developerTextBox.TextChanged += new System.EventHandler(this.developerTextBox_TextChanged);
             // 
@@ -235,7 +235,7 @@
             this.releaseTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.releaseTextBox.Location = new System.Drawing.Point(98, 267);
             this.releaseTextBox.Name = "releaseTextBox";
-            this.releaseTextBox.Size = new System.Drawing.Size(366, 20);
+            this.releaseTextBox.Size = new System.Drawing.Size(365, 20);
             this.releaseTextBox.TabIndex = 15;
             this.releaseTextBox.TextChanged += new System.EventHandler(this.releaseTextBox_TextChanged);
             // 
@@ -244,7 +244,7 @@
             this.ratingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ratingTextBox.Location = new System.Drawing.Point(98, 241);
             this.ratingTextBox.Name = "ratingTextBox";
-            this.ratingTextBox.Size = new System.Drawing.Size(366, 20);
+            this.ratingTextBox.Size = new System.Drawing.Size(365, 20);
             this.ratingTextBox.TabIndex = 14;
             this.ratingTextBox.TextChanged += new System.EventHandler(this.ratingTextBox_TextChanged);
             // 
@@ -253,7 +253,7 @@
             this.imageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.imageTextBox.Location = new System.Drawing.Point(98, 215);
             this.imageTextBox.Name = "imageTextBox";
-            this.imageTextBox.Size = new System.Drawing.Size(366, 20);
+            this.imageTextBox.Size = new System.Drawing.Size(365, 20);
             this.imageTextBox.TabIndex = 13;
             this.imageTextBox.TextChanged += new System.EventHandler(this.imageTextBox_TextChanged);
             // 
@@ -266,7 +266,7 @@
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionTextBox.Size = new System.Drawing.Size(366, 154);
+            this.descriptionTextBox.Size = new System.Drawing.Size(365, 154);
             this.descriptionTextBox.TabIndex = 12;
             this.descriptionTextBox.TextChanged += new System.EventHandler(this.descriptionTextBox_TextChanged);
             // 
@@ -275,7 +275,7 @@
             this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.nameTextBox.Location = new System.Drawing.Point(98, 29);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(366, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(365, 20);
             this.nameTextBox.TabIndex = 11;
             this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
@@ -414,7 +414,7 @@
             this.pathTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pathTextBox.Location = new System.Drawing.Point(98, 3);
             this.pathTextBox.Name = "pathTextBox";
-            this.pathTextBox.Size = new System.Drawing.Size(366, 20);
+            this.pathTextBox.Size = new System.Drawing.Size(365, 20);
             this.pathTextBox.TabIndex = 10;
             // 
             // tableLayoutPanel5
@@ -433,7 +433,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(372, 26);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(371, 26);
             this.tableLayoutPanel5.TabIndex = 19;
             // 
             // playersTextBox
@@ -441,7 +441,7 @@
             this.playersTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.playersTextBox.Location = new System.Drawing.Point(3, 3);
             this.playersTextBox.Name = "playersTextBox";
-            this.playersTextBox.Size = new System.Drawing.Size(146, 20);
+            this.playersTextBox.Size = new System.Drawing.Size(145, 20);
             this.playersTextBox.TabIndex = 19;
             this.playersTextBox.TextChanged += new System.EventHandler(this.playersTextBox_TextChanged);
             // 
@@ -449,7 +449,7 @@
             // 
             this.hiddenCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.hiddenCheckBox.AutoSize = true;
-            this.hiddenCheckBox.Location = new System.Drawing.Point(205, 6);
+            this.hiddenCheckBox.Location = new System.Drawing.Point(204, 6);
             this.hiddenCheckBox.Name = "hiddenCheckBox";
             this.hiddenCheckBox.Size = new System.Drawing.Size(14, 14);
             this.hiddenCheckBox.TabIndex = 20;
@@ -460,7 +460,7 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(225, 6);
+            this.label11.Location = new System.Drawing.Point(224, 6);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(144, 13);
             this.label11.TabIndex = 21;
@@ -477,7 +477,7 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.gameEntrysListBox, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(476, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(475, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
